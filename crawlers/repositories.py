@@ -29,8 +29,45 @@ class UtilsRepository:
         print(f"{reddit_thread.get('rank')} - {reddit_thread.get('title')}")
         print(f"{'-':>5} Score.........: {reddit_thread.get('score')}")
         print(f"{'-':>5} Subreddit.....: {reddit_thread.get('subreddit')}")
-        print(f"{'-':>5} Comments link.: {reddit_thread.get('comments_link')}")
-        print(f"{'-':>5} Thread link...: {reddit_thread.get('thread_link')}")
+        print(
+            f"{'-':>5} Comments link.: {REDDIT_BASE_ADDRESS}/{reddit_thread.get('comments_link')}"
+        )
+        print(
+            f"{'-':>5} Thread link...: {REDDIT_BASE_ADDRESS}/{reddit_thread.get('thread_link')}"
+        )
+
+    def _return_text_formatted_to_telegram(self, reddit_thread: dict) -> str:
+        """Returns a formatted text to show in telegram.
+
+        Args:
+            reddit_thread (dict): The reddit thread informations.
+
+        Returns:
+            str: The text to be returned to telegram.
+        """
+        message = (
+            f"{reddit_thread.get('rank')} - {reddit_thread.get('title')}\n"
+            f"{'-':>5} Score.........: {reddit_thread.get('score')}\n"
+            f"{'-':>5} Subreddit.....: {reddit_thread.get('subreddit')}\n"
+            f"{'-':>5} Comments link.: {REDDIT_BASE_ADDRESS}/{reddit_thread.get('comments_link')}\n"
+            f"{'-':>5} Thread link...: {REDDIT_BASE_ADDRESS}/{reddit_thread.get('thread_link')}"
+        )
+        return message
+
+    def create_list_of_messages_to_telegram(self, buzz_thread_list: List[dict]) -> str:
+        """Create list of messages with buzzer threads list.
+
+        Args:
+            buzz_thread_list (List[dict]): The buzzer threads list.
+
+        Returns:
+            str: A list with the telegram messages.
+        """
+        telegram_messages = [
+            self._return_text_formatted_to_telegram(reddit_thread)
+            for reddit_thread in buzz_thread_list
+        ]
+        return telegram_messages
 
     def _save_thread_to_file(self, reddit_thread: dict, filename: str):
         """Write the crawler results to a file.
@@ -44,8 +81,12 @@ class UtilsRepository:
             file.write(f"{reddit_thread.get('rank')} - {reddit_thread.get('title')}\n")
             file.write(f"{'-':>5} Score.........: {reddit_thread.get('score')}\n")
             file.write(f"{'-':>5} Subreddit.....: {reddit_thread.get('subreddit')}\n")
-            file.write(f"{'-':>5} Comments link.: {reddit_thread.get('comments_link')}\n")
-            file.write(f"{'-':>5} Thread link...: {reddit_thread.get('thread_link')}\n")
+            file.write(
+                f"{'-':>5} Comments link.: {REDDIT_BASE_ADDRESS}/{reddit_thread.get('comments_link')}\n"
+            )
+            file.write(
+                f"{'-':>5} Thread link...: {REDDIT_BASE_ADDRESS}/{reddit_thread.get('thread_link')}\n"
+            )
 
     def cli_show_results(
         self,
