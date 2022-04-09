@@ -1,8 +1,8 @@
 DEFAULT_MAXIMUM_LINE_WIDTH = 40
 DEFAULT_INPUT_TEXT = (
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi cursus eget purus sit amet porta. Pellentesque "
-    "tortor purus, gravida eu pulvinar et, egestas vel ipsum. Vivamus vel nisi congue risus feugiat ultrices. Sed "
-    "et metus id nunc venenatis scelerisque. Suspendisse in eleifend augue, varius faucibus urna. Aenean vel "
-    "tristique tortor. Sed quis tempus justo. Nunc feugiat nibh in odio egestas, nec venenatis velit cursus. Donec "
-    "pellentesque id justo a rutrum. Pellentesque ut tellus turpis duis."
+    "In the beginning God created the heavens and the earth. Now the earth was formless and empty, darkness was "
+    "over the surface of the deep, and the Spirit of God was hovering over the waters. And God said, 'Let there "
+    "be light,' and there was light. God saw that the light was good, and he separated the light from the darkness. "
+    "God called the light 'day,' and the darkness he called 'night.' And there was evening, and there was morning - "
+    "the first day."
 )
