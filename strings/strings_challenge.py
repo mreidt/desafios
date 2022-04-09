@@ -10,9 +10,20 @@ def main(
     input_text: str,
     line_width: int,
     output_filename: str,
-    show_configuration: bool,
     use_python_wrap: bool,
 ):
+    """Executes the strings operations.
+
+    Args:
+        operation (str): Type of operation (left_allign or justify).
+        input_text (str): The input text.
+        line_width (int): Maximum line width.
+        output_filename (str): The output filename.
+        use_python_wrap (bool): Determines the use of built-in python wrap operation.
+
+    Raises:
+        ValueError: Unknown operation found.
+    """
     idwall_text_wrap = IdwallTextWrap()
     try:
         operation = operation.lower()
@@ -30,7 +41,7 @@ def main(
             )
         else:
             raise ValueError(
-                f"You tried to execute an undentified operation ({operation}). "
+                f"You tried to execute an unknown operation ({operation}). "
                 "Available operations are 'left_allign' or 'justify'."
             )
     except ValueError as exception:
