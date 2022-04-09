@@ -6,6 +6,7 @@ from idwall_text_wrap import IdwallTextWrap
 
 
 def main(
+    operation: str,
     input_text: str,
     line_width: int,
     output_filename: str,
@@ -14,15 +15,33 @@ def main(
 ):
     idwall_text_wrap = IdwallTextWrap()
     try:
-        idwall_text_wrap.wrap_text(
-            input_text, line_width, output_filename, show_configuration, use_python_wrap
-        )
+        operation = operation.lower()
+        if operation == "left_allign":
+            if not output_filename:
+                output_filename = "output-part1.txt"
+            idwall_text_wrap.left_allign_text(
+                input_text, line_width, output_filename, use_python_wrap
+            )
+        elif operation == "justify":
+            if not output_filename:
+                output_filename = "output-part2.txt"
+            idwall_text_wrap.justify_text(
+                input_text, line_width, output_filename, use_python_wrap
+            )
+        else:
+            raise ValueError(
+                f"You tried to execute an undentified operation ({operation}). "
+                "Available operations are 'left_allign' or 'justify'."
+            )
     except ValueError as exception:
         print(exception)
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Idwall challenge - Part 1")
+    parser = argparse.ArgumentParser(description="Idwall challenge")
+    parser.add_argument(
+        "operation", type=str, help="The operation to be done: left_allign or justify"
+    )
     parser.add_argument(
         "-t",
         "--input_text",
@@ -62,22 +81,28 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
+    if args.operation.lower() not in ["left_allign", "justify"]:
+        print(
+            f"The operation must be: left_allign or justify! Received {args.operation.lower()}"
+        )
+        exit(1)
     # Those errors should never occur, but tested, just in case.
     if args.input_text and not isinstance(args.input_text, str):
         print(f"Input text should be a string! Received {args.input_text}.")
-        exit(1)
+        exit(2)
     if args.output_filename and not isinstance(args.output_filename, str):
         print(f"Output filename should be a string! Received {args.output_filename}.")
-        exit(1)
+        exit(3)
 
     if args.line_width:
         try:
             args.line_width = int(args.line_width)
         except ValueError:
             print(f"Line width should be an integer! Received {args.line_width}.")
-            exit(1)
+            exit(4)
 
     main(
+        args.operation.lower(),
         args.input_text,
         args.line_width,
         args.output_filename,
