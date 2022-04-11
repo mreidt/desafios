@@ -30,10 +30,10 @@ class UtilsRepository:
         print(f"{'-':>5} Score.........: {reddit_thread.get('score')}")
         print(f"{'-':>5} Subreddit.....: {reddit_thread.get('subreddit')}")
         print(
-            f"{'-':>5} Comments link.: {REDDIT_BASE_ADDRESS}/{reddit_thread.get('comments_link')}"
+            f"{'-':>5} Comments link.: {REDDIT_BASE_ADDRESS}{reddit_thread.get('comments_link')}"
         )
         print(
-            f"{'-':>5} Thread link...: {REDDIT_BASE_ADDRESS}/{reddit_thread.get('thread_link')}"
+            f"{'-':>5} Thread link...: {REDDIT_BASE_ADDRESS}{reddit_thread.get('thread_link')}"
         )
 
     def _return_text_formatted_to_telegram(self, reddit_thread: dict) -> str:
@@ -49,8 +49,8 @@ class UtilsRepository:
             f"{reddit_thread.get('rank')} - {reddit_thread.get('title')}\n"
             f"{'-':>5} Score.........: {reddit_thread.get('score')}\n"
             f"{'-':>5} Subreddit.....: {reddit_thread.get('subreddit')}\n"
-            f"{'-':>5} Comments link.: {REDDIT_BASE_ADDRESS}/{reddit_thread.get('comments_link')}\n"
-            f"{'-':>5} Thread link...: {REDDIT_BASE_ADDRESS}/{reddit_thread.get('thread_link')}"
+            f"{'-':>5} Comments link.: {REDDIT_BASE_ADDRESS}{reddit_thread.get('comments_link')}\n"
+            f"{'-':>5} Thread link...: {REDDIT_BASE_ADDRESS}{reddit_thread.get('thread_link')}"
         )
         return message
 
@@ -82,10 +82,10 @@ class UtilsRepository:
             file.write(f"{'-':>5} Score.........: {reddit_thread.get('score')}\n")
             file.write(f"{'-':>5} Subreddit.....: {reddit_thread.get('subreddit')}\n")
             file.write(
-                f"{'-':>5} Comments link.: {REDDIT_BASE_ADDRESS}/{reddit_thread.get('comments_link')}\n"
+                f"{'-':>5} Comments link.: {REDDIT_BASE_ADDRESS}{reddit_thread.get('comments_link')}\n"
             )
             file.write(
-                f"{'-':>5} Thread link...: {REDDIT_BASE_ADDRESS}/{reddit_thread.get('thread_link')}\n"
+                f"{'-':>5} Thread link...: {REDDIT_BASE_ADDRESS}{reddit_thread.get('thread_link')}\n"
             )
 
     def cli_show_results(
