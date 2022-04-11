@@ -33,3 +33,24 @@ O exemplo de output está [neste arquivo](https://github.com/idwall/desafios/blo
 ### Extras
 
 - Parametrização da quantidade de caracteres por linha.
+
+
+# Como executar
+- O projeto de formatação de strings não possui nenhum requerimento além do próprio Python (versão utilizada para criação: `3.8.10`);
+- Executar o arquivo `strings_challenge.py`;
+- O arquivo executa como um script, por isso é possível utilizar parâmetros para sua execução;
+- Os parâmetros para a execução encontram-se na tabela abaixo:
+
+| Parâmetro | Expandido       | Tipo        | Funcionalidade                                             | 
+|:----------|:----------------|:------------|:-----------------------------------------------------------| 
+| h         | help            | opcional    | exibe na tela o help do script                             |
+| operation | operation       | obrigatório | identifica a operação desejada: `left_allign` ou `justify` |
+| t         | input_text      | opcional    | permite inserir o texto para realizar a operação           |
+| w         | line_width      | opcional    | informa o tamanho máximo da linha                          |
+| f         | output_filename | opcional    | informa um arquivo de saída para salvar o texto formatado  |
+| p         | use_python_wrap | opcional    | utiliza funções _built-in_ do Python                       |
+
+- A operação `left_allign` refere-se ao desafio 1 e a operação `justify` refere-se ao desafio 2.
+
+## Formatação utilizada
+- Foi utilizado um padrão de comprimento de linha de 120 (para execução do _flake8_ e do _isort_).
