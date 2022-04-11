@@ -75,14 +75,6 @@ if __name__ == "__main__":
         help="The output filename to save wrapped text.",
     )
     parser.add_argument(
-        "-c",
-        "--show_config",
-        nargs="?",
-        default=None,
-        const=True,
-        help="Print configuration during execution.",
-    )
-    parser.add_argument(
         "-p",
         "--use_python_wrap",
         nargs="?",
@@ -117,6 +109,5 @@ if __name__ == "__main__":
         args.input_text,
         args.line_width,
         args.output_filename,
-        args.show_config,
         args.use_python_wrap,
     )
